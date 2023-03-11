@@ -15,6 +15,11 @@ passlib = "*"
 pymongo = "*"
 mongoengine = "*"
 url-normalize = "*"
+mongomock = "*"
+dramatiq = {extras = ["redis", "watch"], version = "*"}
+redis = {extras = ["hiredis"], version = "*"}
+dataclasses-json = "*"
+apscheduler = "*"
 
 [dev-packages]
 

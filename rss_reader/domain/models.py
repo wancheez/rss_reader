@@ -1,14 +1,8 @@
-import datetime
-from mongoengine import (
-    EmbeddedDocument,
-    Document,
-    StringField,
-    DateTimeField,
-    ListField,
-    EmbeddedDocumentField,
-    ReferenceField,
-    IntField,
-)
+import time
+
+from mongoengine import (DateTimeField, Document, EmbeddedDocument,
+                         EmbeddedDocumentField, FloatField, IntField,
+                         ListField, ReferenceField, StringField)
 
 
 class FeedItem(EmbeddedDocument):
@@ -19,14 +13,14 @@ class FeedItem(EmbeddedDocument):
     published = DateTimeField()
     author = StringField()
     rights = StringField()
-    updated = DateTimeField(default=datetime.datetime.now())
+    updated = FloatField(default=time.time())
 
 
 class Feed(Document):
     title = StringField(required=True)
     subtitle = StringField()
     language = StringField()
-    updated = DateTimeField(default=datetime.datetime.now())
+    updated = FloatField(default=time.time())
     ttl = IntField(default=360)
     logo = StringField()
     link = StringField(required=True, unique=True)
@@ -41,5 +35,5 @@ class User(Document):
 
 
 class UserReadItem(Document):
-    user = ReferenceField(User, required=True, unique_with=['item_id'])
+    user = ReferenceField(User, required=True, unique_with=["item_id"])
     item_id = StringField(required=True)
