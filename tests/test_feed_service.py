@@ -1,6 +1,7 @@
 import datetime
 import time
 import uuid
+from functools import partial
 from unittest.mock import patch
 
 from rss_reader.domain.models import Feed, FeedItem
@@ -53,8 +54,8 @@ def test_get_feeds(mock_db):
     assert feed1.id == feeds[0].id and feed2.id == feeds[1].id
 
 
-def test_create_feed_from_url(mock_db):
-    feed_service = FeedService(mock_db)
+def test_create_feed_from_url(mock_db, mock_redis):
+    feed_service = FeedService(mock_db, partial(mock_redis, {}))
     with patch("feedparser.parse") as mock_parse:
         mock_parse.return_value = PARSER_RESPONSE
         feed_service.create_feed_from_url("http://test.com")
