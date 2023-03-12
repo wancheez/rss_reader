@@ -9,7 +9,7 @@ class FeedItem(EmbeddedDocument):
     id = StringField(required=True, unique=True)
     title = StringField(required=True)
     link = StringField(required=True)
-    summary = StringField(required=True)
+    summary = StringField()
     published = DateTimeField()
     author = StringField()
     rights = StringField()
