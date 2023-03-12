@@ -6,7 +6,7 @@ RSS scraper application which saves RSS feeds to a database and lets a user view
 
 User can sign up in the system, follow/unfollow new or existing feeds, list followed feeds, get followed feeds' content, mark content as seen and ignore it.
 Feeds can be added to the system, feed content might be displayed, force update of a feed might be performed, failed to update feeds might be listed.
-
+Feeds can be found in https://rss.com/blog/popular-rss-feeds/
 
 ## Swagger
 - GET /docs - Swagger with all provided endpoints
